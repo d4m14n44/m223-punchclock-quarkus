@@ -20,6 +20,9 @@ public class Entry {
     @ManyToOne
     private Category category;
 
+    @ManyToOne
+    private Location location;
+
     public Long getId() {
         return id;
     }
