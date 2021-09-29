@@ -1,5 +1,7 @@
 package ch.zli.m223.punchclock.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,13 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    private Boolean isAdmin;
+
+    @OneToMany(mappedBy = "user")
+    // Möchte ich nicht sehen (Imfalle einer Rekursion)
+    @JsonIgnore
+    private List<Entry> entries;
 
     public Long getId() {
         return id;
@@ -38,5 +47,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
+    public List<Entry> getEntries() {
+        return entries;
+    }
+
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
     }
 }
