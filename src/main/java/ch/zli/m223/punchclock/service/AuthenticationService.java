@@ -29,6 +29,7 @@ public class AuthenticationService {
         return token;
     }
 
+    // Diese Klasse ist schon die Anmeldung, nur noch mit den richtigen Daten befüllen
     public boolean checkIfUserExists(User user) {
         // :name, :password werden nachher mit setParameter gesetzt
         var query = entityManager.createQuery("SELECT COUNT (*) FROM User WHERE username = :name AND password = :password");
