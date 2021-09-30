@@ -13,5 +13,5 @@ import javax.ws.rs.Path;
 public class LocationController {
     @Inject
     LocationService locationService;
-    
+
 }
