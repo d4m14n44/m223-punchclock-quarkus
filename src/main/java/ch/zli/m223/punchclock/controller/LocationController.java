@@ -4,6 +4,7 @@ import ch.zli.m223.punchclock.domain.Entry;
 import ch.zli.m223.punchclock.domain.Location;
 import ch.zli.m223.punchclock.service.LocationService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -16,6 +17,7 @@ import java.util.List;
  * dazu, dass es nicht immer die gleichen Locations sind
  */
 @Path("/loca")
+@Tag(name = "Locations", description = "Handling of locations")
 public class LocationController {
     @Inject
     LocationService locationService;
@@ -29,15 +31,18 @@ public class LocationController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Get a location with help of the ID")
     @Path("/{location")
     public Location getLocation(@PathParam("location") Long Id) { return this.locationService.getLocation(Id);}
 
     @DELETE
+    @Operation(summary = "Delete a location with help of the ID")
     @PathParam("/{location}")
     public void delete(@PathParam("location") Long Id) {this.locationService.delete(Id);}
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Update a location with help of the ID")
     @Consumes(MediaType.APPLICATION_JSON)
     public Location updateLocation(Location location) {
         return this.locationService.update(location);
@@ -50,6 +55,7 @@ public class LocationController {
     public Location add(Location location) {return this.locationService.createLocation(location);}
 
     @DELETE
+    @Operation(summary = "Delete a location with help of the location parameter")
     public void delete(Location location) {this.locationService.findAll().remove(location);}
 
 
