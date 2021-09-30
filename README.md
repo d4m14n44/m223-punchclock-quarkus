@@ -30,7 +30,11 @@ Datenquelle: jdbc:h2:mem:punchclock
 Benutzername: zli
 Passwort: zli
 
-Rufen Sie die API Swagger auf und fügen Sie mit folgendem Code ein Entry hinzu:
+Das File import.sql (LB_Oberholzer_Damian.zip/m223-punchclock-quarkus/src/main/resources/import.sql) ist ein Skript, welches Beispieldaten ladet:
+Es werden 3 Categories, 1 User und 1 Location in die Datenbank (H2) geladen. Mittels den geladenen Daten kann der nächste Schritt getätigt werden,
+eine Entity manuell hinzuzufügen.
+
+Rufen Sie hierfür die API Swagger auf und fügen Sie mit folgendem Code ein Entry hinzu:
 
 {
 "category": {
