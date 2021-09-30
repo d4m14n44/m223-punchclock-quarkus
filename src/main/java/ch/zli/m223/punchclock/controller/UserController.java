@@ -21,22 +21,25 @@ public class UserController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "List all Users", description = "")
+    @Operation(summary = "List all Users", description = "A list of all users is returned")
     public List<User> list() {
         return this.userService.findAll();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Get a User with help of the ID", description = "The user which was found is returned")
     @Path("/{user}")
     public User getUser(@PathParam("user") Long Id) {return this.userService.getUser(Id);}
 
     @DELETE
+    @Operation(summary = "Delete a User with help of the ID", description = "Nothing is returned (void)")
     @Path("/{user}")
     public void delete(@PathParam("user") Long Id) {this.userService.delete(Id);}
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Update a User with help of the user parameter", description = "The updated user is returned")
     @Consumes(MediaType.APPLICATION_JSON)
     public User updateUser(User user) {
         return this.userService.update(user);
@@ -51,6 +54,7 @@ public class UserController {
     }
 
     @DELETE
+    @Operation(summary = "Delete a User with help of the user parameter", description = "Nothing is returned (void)")
     public void delete(User user) {this.userService.findAll().remove(user);}
 
 }

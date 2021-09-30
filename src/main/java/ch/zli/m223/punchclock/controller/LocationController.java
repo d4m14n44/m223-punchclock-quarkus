@@ -42,7 +42,7 @@ public class LocationController {
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Update a location with help of the ID")
+    @Operation(summary = "Update a location with help of the location parameter")
     @Consumes(MediaType.APPLICATION_JSON)
     public Location updateLocation(Location location) {
         return this.locationService.update(location);
