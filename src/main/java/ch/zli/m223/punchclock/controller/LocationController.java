@@ -24,25 +24,25 @@ public class LocationController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "List all locations", description = "")
+    @Operation(summary = "List all locations", description = "A list of all locations is returned")
     public List<Location> list() {
         return this.locationService.findAll();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Get a location with help of the ID")
+    @Operation(summary = "Get a location with help of the ID", description = "The location which was found is returned")
     @Path("/{location")
     public Location getLocation(@PathParam("location") Long Id) { return this.locationService.getLocation(Id);}
 
     @DELETE
-    @Operation(summary = "Delete a location with help of the ID")
+    @Operation(summary = "Delete a location with help of the ID", description = "Nothing is returned (void)")
     @PathParam("/{location}")
     public void delete(@PathParam("location") Long Id) {this.locationService.delete(Id);}
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Update a location with help of the location parameter")
+    @Operation(summary = "Update a location with help of the location parameter", description = "The updated location is returned")
     @Consumes(MediaType.APPLICATION_JSON)
     public Location updateLocation(Location location) {
         return this.locationService.update(location);
@@ -55,7 +55,7 @@ public class LocationController {
     public Location add(Location location) {return this.locationService.createLocation(location);}
 
     @DELETE
-    @Operation(summary = "Delete a location with help of the location parameter")
+    @Operation(summary = "Delete a location with help of the location parameter", description = "Nothing is returned (void)")
     public void delete(Location location) {this.locationService.findAll().remove(location);}
 
 
