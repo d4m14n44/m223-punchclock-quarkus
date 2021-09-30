@@ -32,13 +32,18 @@ public class LocationController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Get a location with help of the ID", description = "The location which was found is returned")
-    @Path("/{location")
+    @Path("/{location}")
     public Location getLocation(@PathParam("location") Long Id) { return this.locationService.getLocation(Id);}
 
     @DELETE
     @Operation(summary = "Delete a location with help of the ID", description = "Nothing is returned (void)")
-    @PathParam("/{location}")
-    public void delete(@PathParam("location") Long Id) {this.locationService.delete(Id);}
+    @PathParam("/{id}")
+    public void delete(@PathParam("id") Long Id) {this.locationService.delete(Id);}
+
+    @DELETE
+    @Operation(summary = "Delete a location with help of the location parameter", description = "Nothing is returned (void)")
+    public void deleteWithLocation(Location location) {this.locationService.findAll().remove(location);}
+
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
@@ -54,9 +59,6 @@ public class LocationController {
     @Operation(summary = "Add a new Location", description = "The newly created location is returned. The Id may not be passed")
     public Location add(Location location) {return this.locationService.createLocation(location);}
 
-    @DELETE
-    @Operation(summary = "Delete a location with help of the location parameter", description = "Nothing is returned (void)")
-    public void delete(Location location) {this.locationService.findAll().remove(location);}
 
 
 }
